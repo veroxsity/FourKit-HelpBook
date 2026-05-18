@@ -1,36 +1,45 @@
 ﻿# FourKit-HelpBook
 
-Lightweight in-game help-text plugin for FourKit servers running Minecraft Legacy Console Edition. Add entries to a JSON file, players list them with `/help` and read individual pages by name.
+Simple configurable help system for FourKit servers. Players run `/help` to get a list of topics; `/help <topic>` to read the details.
 
 ## Installation
-
-1. Build (see below) or grab the latest `HelpBook.dll` from Releases
-2. Drop it into `<server>/plugins/`
-3. Restart the server
-
-## Configuration
-
-`plugins/HelpBook-data/entries.json` is generated on first run. Each entry has a name (the lookup key) and a list of body lines. Edit the file in place and run `/help reload` (admin) or restart to pick up changes.
-
-## Commands
-
-| Command | Description |
-|---|---|
-| `/help` | List all available help entries |
-| `/help <name>` | Show the body of a specific entry |
-## Building from source
-
-Requires .NET 10 SDK.
 
 ```powershell
 .\build.ps1 -StopServer
 ```
 
-The script auto-stops a running `Minecraft.Server.exe`, builds in Release mode, and copies the DLL to `..\..\Server\plugins\`. Or build manually:
+## Commands
 
-```powershell
-dotnet build -c Release
+- `/help` - list all configured help topics
+- `/help <topic>` - show the lines configured for that topic
+
+## Configuration
+
+`plugins/HelpBook-data/entries.json` (auto-generated on first run with example entries):
+
+```json
+{
+  "Entries": [
+    {
+      "Topic": "rules",
+      "Lines": [
+        "No griefing",
+        "No hacks",
+        "Have fun"
+      ]
+    },
+    {
+      "Topic": "commands",
+      "Lines": [
+        "/duel <player> <kit> - challenge someone",
+        "/link - link your Discord account"
+      ]
+    }
+  ]
+}
 ```
+
+Topics are matched case-insensitively. Lines are sent to the player verbatim, so Bukkit-style color codes (`&a`, `&c`, etc.) work.
 
 ## License
 
