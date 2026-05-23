@@ -15,6 +15,8 @@ public sealed class HelpCommand : CommandExecutor
 
     public bool onCommand(CommandSender sender, Command command, string label, string[] args)
     {
+        if (!LCEPermsBridge.requirePerm(sender, "helpbook.use")) return true;
+
         if (args.Length == 0)
         {
             showPage(sender, 1);
