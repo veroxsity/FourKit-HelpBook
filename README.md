@@ -1,6 +1,6 @@
-﻿# FourKit-HelpBook
+# FourKit-HelpBook
 
-> **WARNING**: This plugin's `/help` command is open to everyone unless [LCEPerms](https://github.com/veroxsity/LCEPerms) is also installed. Without LCEPerms, any player can run `/help`. Install LCEPerms to gate access by group.
+> **WARNING**: This plugin's `/help` command is open to everyone unless [LCEPerms](https://github.com/veroxsity/FourKit-LCEPerms) is also installed. Without LCEPerms, any player can run `/help`. Install LCEPerms to gate access by group.
 >
 > Permission node:
 > - `helpbook.use` - run `/help`
